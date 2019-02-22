@@ -80,7 +80,10 @@ function removeClass(name) {
 };
 
 function pasteSVG(svg) {
-  console.log('svg', svg);
+  let svgContainer = document.getElementById('svg');
+
+  svg = '<img src="./jerseys/' + svg +'.svg" />';
+  svgContainer.innerHTML = svg;
 };
 
 watchJerseyClick();

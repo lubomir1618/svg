@@ -41,12 +41,15 @@ input, select {
   width: 50%;
   float: left;
 }
+.pick {
+  padding-top: 20px;
+}
 .clearfix {
   clear: both;
   height: 0px;
   border: 0px;
 }
-.svg {
+.output {
   width: 100%;
   border: 1px solid #bebaba;
   border-radius: 2px;
@@ -54,6 +57,10 @@ input, select {
   color: #ff0000;
   background: #e9e5e5;
   margin-bottom: 15px;
+}
+#svg img {
+  width: 240px;
+  height: auto;
 }
 .pictures {
   width: auto;

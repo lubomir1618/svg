@@ -1,7 +1,17 @@
 // jerseys configuration
-const jersey_halves = {};
-const jersey_hooped = {};
-const jersey_quarters = {};
+
+const jersey_halves = {
+  base_color: '',
+  collar: ''
+};
+const jersey_hooped = {
+  base_color: '',
+  collar: ''
+};
+const jersey_quarters = {
+  base_color: '',
+  collar: ''
+};
 
 const jersey_plain = {
   base_color: '',
@@ -21,24 +31,63 @@ const jersey_plain_shoulders_cuffs = {
   cuffs: ''
 };
 
-const jersey_vertical_bars_shoulders = {};
-const jersey_vertical_bars_shoulders_cuffs = {};
-const jersey_vertical_bars_cuffss = {};
+const jersey_vertical_bars_shoulders = {
+  base_color: '',
+  collar: '',
+  shoulders: '',
+  shoulders_strips: '',
+  cuffs: ''
+};
+const jersey_vertical_bars_shoulders_cuffs = {
+  base_color: '',
+  collar: '',
+  shoulders: '',
+  shoulders_strips: '',
+  cuffs: ''
+};
+const jersey_vertical_bars_cuffss = {
+  base_color: '',
+  collar: '',
+  shoulders: '',
+  shoulders_strips: '',
+  cuffs: ''
+};
 
-// click listener
-let images = document.querySelectorAll('img');
-images.forEach(image => {
-  image.addEventListener('click', () => {
-    debugger;
-    removeClass('picture-highlight');
-    image.classList.add('picture-highligt');
-  });
-});
+// jersey click listener
+let images = document.querySelectorAll('.jersey');
 
-function removeClass() {
-  let elements = document.getElementsByClassName('jersey');
-  [...elements].forEach(element => {
-    element.classList.remove('picture-highlight');
-    console.log('element', element.classList);
-  });
+function watchJerseyClick() {
+  const highlight = 'picture-highligt';
+  [...images].forEach(
+    (image) => {
+      image.addEventListener('click', () => {
+        removeClass(highlight);
+        pasteSVG(image.id);
+        image.classList.add(highlight);
+      });
+    }
+  );
 }
+
+function removeClass(name) {
+  let images = document.querySelectorAll('.jersey');
+
+  [...images].forEach(
+    (image) => {
+      image.classList.remove(name);
+    }
+  );
+};
+
+function pasteSVG(svg) {
+  console.log('svg', svg);
+};
+
+watchJerseyClick();
+
+
+/*
+<input type="color" id="base_color" name="base_color" value="#ffffff">
+<label for="base_color">Base color</label>
+<br>
+*/

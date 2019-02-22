@@ -3,7 +3,7 @@
   position: relative;
   box-sizing: border-box;
   font-size: 15px;
-  transition: all .6s ease;
+  transition: all .6s ease-out;
 }
 html, body {
   width: 100%;
@@ -14,7 +14,7 @@ html, body {
   color: #272525;
 }
 img {
-  width: 180px;
+  width: 150px;
   height: auto;
 }
 input, select {
@@ -46,7 +46,7 @@ input, select {
   height: 0px;
   border: 0px;
 }
-.json {
+.svg {
   width: 100%;
   border: 1px solid #bebaba;
   border-radius: 2px;

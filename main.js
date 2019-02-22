@@ -1,16 +1,23 @@
 // jerseys configuration
 const jerseys = {
   jersey_halves: {
-    base_color: '',
-    collar: ''
+    base_color_left: '',
+    base_color_right: '',
+    collar: '',
+    shoulder_left: '',
+    shoulder_right: ''
   },
    jersey_hooped: {
     base_color: '',
-    collar: ''
+    collar: '',
+    hooped: ''
   },
    jersey_quarters: {
     base_color: '',
-    collar: ''
+    collar: '',
+    quarters: '',
+    shoulder_left: '',
+    shoulder_right: ''
   },
 
    jersey_plain: {
@@ -36,6 +43,7 @@ const jerseys = {
     collar: '',
     shoulders: '',
     shoulders_strips: '',
+    bars: '',
     cuffs: ''
   },
    jersey_vertical_bars_shoulders_cuffs: {
@@ -43,6 +51,7 @@ const jerseys = {
     collar: '',
     shoulders: '',
     shoulders_strips: '',
+    bars: '',
     cuffs: ''
   },
    jersey_vertical_bars_cuffs: {
@@ -50,6 +59,7 @@ const jerseys = {
     collar: '',
     shoulders: '',
     shoulders_strips: '',
+    bars: '',
     cuffs: ''
   },
 }

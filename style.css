@@ -33,16 +33,14 @@ input, select {
 .pick {
   width: 100%;
 }
-.form {
+#form {
   width: 50%;
   float: left;
+  padding-top: 10px;
 }
 .svg-preview {
   width: 50%;
   float: left;
-}
-.pick {
-  padding-top: 20px;
 }
 .clearfix {
   clear: both;

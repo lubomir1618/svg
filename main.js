@@ -1,57 +1,59 @@
 // jerseys configuration
+const jerseys = {
+  jersey_halves: {
+    base_color: '',
+    collar: ''
+  },
+   jersey_hooped: {
+    base_color: '',
+    collar: ''
+  },
+   jersey_quarters: {
+    base_color: '',
+    collar: ''
+  },
 
-const jersey_halves = {
-  base_color: '',
-  collar: ''
-};
-const jersey_hooped = {
-  base_color: '',
-  collar: ''
-};
-const jersey_quarters = {
-  base_color: '',
-  collar: ''
-};
+   jersey_plain: {
+    base_color: '',
+    collar: ''
+  },
+   jersey_plain_shoulders: {
+    base_color: '',
+    collar: '',
+    shoulders: '',
+    shoulders_strips: ''
+  },
+   jersey_plain_shoulders_cuffs: {
+    base_color: '',
+    collar: '',
+    shoulders: '',
+    shoulders_strips: '',
+    cuffs: ''
+  },
 
-const jersey_plain = {
-  base_color: '',
-  collar: ''
-};
-const jersey_plain_shoulders = {
-  base_color: '',
-  collar: '',
-  shoulders: '',
-  shoulders_strips: ''
-};
-const jersey_plain_shoulders_cuffs = {
-  base_color: '',
-  collar: '',
-  shoulders: '',
-  shoulders_strips: '',
-  cuffs: ''
-};
+   jersey_vertical_bars_shoulders: {
+    base_color: '',
+    collar: '',
+    shoulders: '',
+    shoulders_strips: '',
+    cuffs: ''
+  },
+   jersey_vertical_bars_shoulders_cuffs: {
+    base_color: '',
+    collar: '',
+    shoulders: '',
+    shoulders_strips: '',
+    cuffs: ''
+  },
+   jersey_vertical_bars_cuffs: {
+    base_color: '',
+    collar: '',
+    shoulders: '',
+    shoulders_strips: '',
+    cuffs: ''
+  },
+}
 
-const jersey_vertical_bars_shoulders = {
-  base_color: '',
-  collar: '',
-  shoulders: '',
-  shoulders_strips: '',
-  cuffs: ''
-};
-const jersey_vertical_bars_shoulders_cuffs = {
-  base_color: '',
-  collar: '',
-  shoulders: '',
-  shoulders_strips: '',
-  cuffs: ''
-};
-const jersey_vertical_bars_cuffss = {
-  base_color: '',
-  collar: '',
-  shoulders: '',
-  shoulders_strips: '',
-  cuffs: ''
-};
 
 // jersey click listener
 let images = document.querySelectorAll('.jersey');
@@ -63,6 +65,7 @@ function watchJerseyClick() {
       image.addEventListener('click', () => {
         removeClass(highlight);
         pasteSVG(image.id);
+        drawPicker(image.id)
         image.classList.add(highlight);
       });
     }
@@ -85,6 +88,22 @@ function pasteSVG(svg) {
   svg = '<img src="./jerseys/' + svg +'.svg" />';
   svgContainer.innerHTML = svg;
 };
+
+function drawPicker(svg) {
+  let pickerContainer = document.getElementById('form');
+  let picker = '';
+
+  Object.keys(jerseys[svg]).forEach(param => {
+
+    picker += `
+      <input type="color" id="${param}" name="${param}" value="#ffffff">
+      <label for="base_color">${param}</label>
+      <br>
+    `
+  });
+
+  pickerContainer.innerHTML = picker;
+}
 
 watchJerseyClick();
 

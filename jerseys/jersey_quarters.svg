@@ -5,11 +5,11 @@
 <style type="text/css">
 	.shadow{opacity:6.000000e-02;fill:#010101;}
 	.collar-inside{fill:#D2AA2A;}
-	.collar-shade{fill:#A32D28;}
-	.main{fill:#FFCB05;}	
+	.collar-shade{fill:#A32D28;}	
 	.shade{fill:#010101;opacity:0.1;}
-	.accent{fill:#BC3532;}	
+	.main{fill:#FFCB05;}	
 	.secondary{fill:#E75F29;}
+	.accent{fill:#BC3532;}		
 </style>
 <ellipse class="shadow" cx="282.8" cy="495.3" rx="194.4" ry="26.1"/>
 <g>

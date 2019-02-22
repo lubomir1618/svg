@@ -7,10 +7,10 @@
 	.shade{fill:#010101;opacity:0.1;}
 	.collar-inside{fill:#AE3231;}
 	.collar-shade{fill:#D7D8D9;}
-	.accent{fill:#F4F4F4;}
-	.secondary{fill:#F4F4F4;}
 	.main{fill:#E03F3E;}
-</style>
+	.secondary{fill:#F4F4F4;}
+	.accent{fill:#F4F4F4;}
+	</style>
 <ellipse class="shadow" cx="282.5" cy="496.3" rx="194.3" ry="26.1"/>
 <g>
 	<rect x="239.3" y="46.8" class="collar-inside" width="89" height="86.5"/>

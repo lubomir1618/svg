@@ -6,11 +6,11 @@
 	.opacity-1{opacity:0.1;}
 	.opacity-2{opacity:0.2;}
 	.shadow{opacity:6.000000e-02;}
+	.collar-inside{fill:#AFB1B4;}
+	.collar-shade{fill:#231F20;}
 	.main{fill:#E6E7E8;}
 	.secondary{fill:#231F20;}
 	.accent{fill:#231F20;}
-	.collar-inside{fill:#AFB1B4;}
-	.collar-shade{fill:#231F20;}
 </style>
 <g>
 	<ellipse class="shadow" cx="62.3" cy="106.4" rx="41" ry="5.5"/>

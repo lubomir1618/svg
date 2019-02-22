@@ -7,8 +7,8 @@
 	.shade{fill:#010101;opacity:0.1;}
 	.collar-inside{fill:#062240;}
 	.collar-shade{fill:#1D8040;}
-	.secondary{fill:#1D8040;}
 	.main{fill:#1F3569;}
+	.secondary{fill:#1D8040;}	
 	.accent{fill:#449360;}
 </style>
 <ellipse class="shadow" cx="282.5" cy="495.3" rx="194.4" ry="26.1"/>

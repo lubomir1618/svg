@@ -5,12 +5,12 @@
 <style type="text/css">
 	.opacity-1{opacity:0.1;}
 	.opacity-2{opacity:0.2;}
-	.shadow{opacity:6.000000e-02;}	
+	.shadow{opacity:6.000000e-02;}
 	.accent{fill:#E6E7E8;}	
 	.collar-inside{fill:#083065;}
-	.secondary{fill:#FFFFFF;}
 	.collar-shade{fill:#C4C6C7;}
 	.main{fill:#4B9DD9;}
+	.secondary{fill:#FFFFFF;}
 </style>
 <g>
 </g>

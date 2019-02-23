@@ -6,9 +6,7 @@
   transition: all .6s ease-out;
 }
 html, body {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(lightblue, white);
+  background: #e0dbdb;
   padding-top: 10px;
   font-family: 'Open Sans', sans-serif;
   color: #272525;
@@ -37,12 +35,12 @@ input, select {
   width: 50%;
   float: left;
 }
-.svg-preview {
+#svg {
   width: 50%;
   float: left;
   text-align: right;
 }
-.svg-preview:after {
+#svg:after {
   content: 'SVG preview';
   position: absolute;
   right: 5px;
@@ -93,4 +91,109 @@ input, select {
   box-shadow: 1px 1px 20px #e9e5e5;
   background: #ffffff;
   cursor: pointer;
+}
+
+input[type="color"] {
+  cursor: pointer;
+}
+
+
+/* loading circles*/
+.loading {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  margin: 20px 0 0 -100px;
+  border: 2px solid transparent;
+  border-top: 3px solid salmon;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 200px;
+  -webkit-animation: around 1.8s linear infinite;
+          animation: around 1.8s linear infinite;
+}
+.loading:before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top: 4px solid lightblue;
+  -webkit-animation: around 2.2s ease-in infinite;
+          animation: around 2.2s ease-in infinite;
+}
+.loading:after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top: 3px solid lightgreen;
+  -webkit-animation: around 1.5s ease-out infinite;
+          animation: around 1.5s ease-out infinite;
+}
+
+@-webkit-keyframes around {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    background-color: #fff;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes around {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    background-color: #fff;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes gradient {
+  0% {
+    background: linear-gradient(top, white, lightgray);
+  }
+  50% {
+    background: linear-gradient(top, white, lightblue);
+  }
+  100% {
+    background: linear-gradient(top, white, lightgray);
+  }
+}
+@keyframes gradient {
+  0% {
+    background: linear-gradient(top, white, lightgray);
+  }
+  50% {
+    background: linear-gradient(top, white, lightblue);
+  }
+  100% {
+    background: linear-gradient(top, white, lightgray);
+  }
 }

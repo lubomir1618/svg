@@ -3,18 +3,18 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 567 567" style="enable-background:new 0 0 567 567;" xml:space="preserve">
 <style type="text/css">
-	.shadow{opacity:6.000000e-02;fill:#010101;}
+	.shadow{opacity:0.1;fill:#010101;}
 	.shade{fill:#010101;opacity:0.1;}
-	.collar-inside{fill:#AE3231;}
-	.collar-shade{fill:#D7D8D9;}
+	.main-shade{fill:#AE3231;}
+	.accent-shade{fill:#D7D8D9;}
 	.main{fill:#E03F3E;}
 	.secondary{fill:#F4F4F4;}
 	.accent{fill:#F4F4F4;}
 	</style>
 <ellipse class="shadow" cx="282.5" cy="496.3" rx="194.3" ry="26.1"/>
 <g>
-	<rect x="239.3" y="46.8" class="collar-inside" width="89" height="86.5"/>
-	<rect x="239.3" y="46.8" class="collar-shade" width="89" height="9.6"/>
+	<rect x="239.3" y="46.8" class="main-shade" width="89" height="86.5"/>
+	<rect x="239.3" y="46.8" class="accent-shade" width="89" height="9.6"/>
 	<path class="secondary" d="M129.6,101.1c0,0-38.7,69-55.6,121.1c4.2,12.7,43,38.7,81,35.9c12.7-34.5,23.2-49.3,23.2-49.3
 		S181,118.7,129.6,101.1z"/>
 	<path class="secondary" d="M437.4,101.1c0,0,38.7,69,55.6,121.1c-4.2,12.7-43,38.7-81,35.9c-12.7-34.5-23.2-49.3-23.2-49.3

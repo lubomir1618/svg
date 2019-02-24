@@ -75,8 +75,7 @@ function svgStyleHandler() {
   let style = document.querySelector('#svg').querySelector('svg').getElementsByTagName('style')[0]; //innerHTML
   let cssRules = style.sheet.cssRules;
 
-  //@TODO take these styles from object
-  newStyle += '.shadow{opacity:0.06;fill:#010101;}\n';
+  //@TODO take this style from object  
   newStyle += '.shade{opacity:0.1;fill:#010101;}\n';
   /*
   [...rule.style].forEach(style => {

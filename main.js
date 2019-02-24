@@ -1,12 +1,12 @@
 // jerseys configuration
 const svgLocation = './jerseys/';
-let images = document.querySelectorAll('.jersey');
 
 const color_type_names = {
   main: 'main color (torso)',
   secondary: 'secondary color',
   accent: 'collar / strips'
 }
+// for new or different jersey just add it to this object and to svgLocation
 const jerseys = {
   jersey_halves: ['main', 'secondary', 'accent'],
   jersey_hooped: ['main', 'secondary', 'accent'],
@@ -23,6 +23,7 @@ const jerseys = {
 
 function watchJerseyClick() {
   const highlight = 'picture-highligt';
+  let images = document.querySelectorAll('.jersey');
 
   [...images].forEach(
     (image) => {
@@ -53,7 +54,7 @@ function pasteSVG(svg, element) {
     return response.text()
   }).then(data => {
     document.querySelector(element).innerHTML = data;
-    getColorsToPicker();    
+    getColorsToPicker();
   })
 }
 
@@ -74,7 +75,7 @@ function svgStyleHandler() {
   let style = document.querySelector('#svg').querySelector('svg').getElementsByTagName('style')[0]; //innerHTML
   let cssRules = style.sheet.cssRules;
 
-  //@TODO take this styles from object
+  //@TODO take these styles from object
   newStyle += '.shadow{opacity:0.06;fill:#010101;}\n';
   newStyle += '.shade{opacity:0.1;fill:#010101;}\n';
   /*
@@ -92,7 +93,7 @@ function svgStyleHandler() {
       newStyle += rule.selectorText !== '.secondary' ? rule.selectorText + '-shade' + '{fill:#' + changeColorShade(color.value.substr(1), -15) + '} \n' : '';
     }
   });
-  console.log(newStyle);
+
   style.innerHTML = newStyle;
   generateSVGLink();
 }
@@ -154,4 +155,19 @@ function drawPicker(svg) {
   pickerContainer.innerHTML = picker;
 }
 
-watchJerseyClick();
+function drawImages() {
+  let images = document.querySelector('#content').querySelector('#pictures');
+  let content = '';
+  images.innerHTML = '<p class="loading"></p>';
+
+  Object.keys(jerseys).forEach(image => {
+    content += `<img src="${svgLocation}${image}.svg" alt="${image}" id="${image}" class="jersey"/>\n`;
+  });
+
+  images.innerHTML = content;
+  watchJerseyClick(); 
+}
+
+drawImages();
+
+// @TODO check MS Edge

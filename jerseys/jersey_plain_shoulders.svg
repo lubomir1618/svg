@@ -2,8 +2,7 @@
 <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 567 567" style="enable-background:new 0 0 567 567;" xml:space="preserve">
-<style type="text/css">
-	.shadow{opacity:0.1;fill:#010101;}
+<style type="text/css">	
 	.shade{fill:#010101;opacity:0.1;}
 	.main-shade{fill:#AE3231;}
 	.accent-shade{fill:#D7D8D9;}
@@ -11,7 +10,7 @@
 	.secondary{fill:#F4F4F4;}
 	.accent{fill:#F4F4F4;}
 	</style>
-<ellipse class="shadow" cx="282.5" cy="496.3" rx="194.3" ry="26.1"/>
+<ellipse class="shade" cx="282.5" cy="496.3" rx="194.3" ry="26.1"/>
 <g>
 	<rect x="239.3" y="46.8" class="main-shade" width="89" height="86.5"/>
 	<rect x="239.3" y="46.8" class="accent-shade" width="89" height="9.6"/>

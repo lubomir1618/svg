@@ -1,11 +1,11 @@
 // jerseys configuration
-let finalJersey;
 const svgLocation = './jerseys/';
+let images = document.querySelectorAll('.jersey');
 
 const color_type_names = {
   main: 'main color (torso)',
   secondary: 'secondary color',
-  accent: 'collar / shoulders strips / cuffs'
+  accent: 'collar / strips'
 }
 const jerseys = {
   jersey_halves: ['main', 'secondary', 'accent'],
@@ -21,11 +21,8 @@ const jerseys = {
   jersey_vertical_bars_shoulders_cuffs: ['main', 'secondary', 'accent'],
 }
 
-// jersey click listener
-let images = document.querySelectorAll('.jersey');
-
 function watchJerseyClick() {
-  const highlight = 'picture-highligt';  
+  const highlight = 'picture-highligt';
 
   [...images].forEach(
     (image) => {
@@ -51,52 +48,60 @@ function removeClass(name) {
   );
 };
 
-function watchPickerClick() {
-  return
-};
-
 function pasteSVG(svg, element) {
   fetch(svg).then(response => {
     return response.text()
   }).then(data => {
-    finalJersey = data;
-    document.querySelector(element).innerHTML = finalJersey;
-    getColorsToPicker();
-    svgStyleHandler();
+    document.querySelector(element).innerHTML = data;
+    getColorsToPicker();    
   })
 }
 
 function changeColorShade(color, percent) {
-  let R = parseInt(color.substring(1, 3), 16);
-  let G = parseInt(color.substring(3, 5), 16);
-  let B = parseInt(color.substring(5, 7), 16);
+  //-n darken, n lighten
+  let num = parseInt(color, 16),
+    amt = Math.round(2.55 * percent),
+    R = (num >> 16) + amt,
+    B = (num >> 8 & 0x00FF) + amt,
+    G = (num & 0x0000FF) + amt;
 
-  R = parseInt(R * (100 + percent) / 100);
-  G = parseInt(G * (100 + percent) / 100);
-  B = parseInt(B * (100 + percent) / 100);
-
-  R = (R < 255) ? R : 255;
-  G = (G < 255) ? G : 255;
-  B = (B < 255) ? B : 255;
-
-  const RR = ((R.toString(16).length == 1) ? '0' + R.toString(16) : R.toString(16));
-  const GG = ((G.toString(16).length == 1) ? '0' + G.toString(16) : G.toString(16));
-  const BB = ((B.toString(16).length == 1) ? '0' + B.toString(16) : B.toString(16));
-
-  return '#' + RR + GG + BB;
+  return (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 + (B < 255 ? B < 1 ? 0 : B : 255) * 0x100 + (G < 255 ? G < 1 ? 0 : G : 255)).toString(16).slice(1);
 };
 
 function svgStyleHandler() {
-  let style = document.querySelector('#svg').querySelector('svg').getElementsByTagName('style')[0];
-  console.log(style);
-  //debugger;
+  const pickerContainer = document.querySelector('#form');
+  let newStyle = '';
+  let style = document.querySelector('#svg').querySelector('svg').getElementsByTagName('style')[0]; //innerHTML
+  let cssRules = style.sheet.cssRules;
+
+  //@TODO take this styles from object
+  newStyle += '.shadow{opacity:0.06;fill:#010101;}\n';
+  newStyle += '.shade{opacity:0.1;fill:#010101;}\n';
+  /*
+  [...rule.style].forEach(style => {
+    console.log(style);
+  });
+  */
+
+  [...cssRules].forEach(rule => {
+    let color;
+    color = pickerContainer.querySelector('#' + rule.selectorText.substr(1));
+
+    if (color) {
+      newStyle += rule.selectorText + '{fill:' + color.value + '} \n';
+      newStyle += rule.selectorText !== '.secondary' ? rule.selectorText + '-shade' + '{fill:#' + changeColorShade(color.value.substr(1), -15) + '} \n' : '';
+    }
+  });
+  console.log(newStyle);
+  style.innerHTML = newStyle;
+  generateSVGLink();
 }
 
 function getColorsToPicker() {
   const svg = document.querySelector('svg');
   const svgRules = svg.getElementsByTagName('style')[0].sheet.cssRules;
   const cssClasses = [];
-  let form = document.querySelector('#form'); 
+  let form = document.querySelector('#form');
 
   Object.keys(color_type_names).forEach(color => {
     cssClasses.push(color);
@@ -104,13 +109,26 @@ function getColorsToPicker() {
 
   [...svgRules].forEach(rule => {
     const cssSelector = rule.selectorText.substr(1);
-    if(cssClasses.includes(cssSelector)) {
+    if (cssClasses.includes(cssSelector)) {
       form.querySelector('#' + cssSelector).value = rgbToHex(rule.style.fill);
     }
   });
+
+  svgStyleHandler();
 }
 
-function rgbToHex(rgb) { 
+function generateSVGLink() {
+  svg = document.querySelector('#svg').querySelector('svg');
+
+  serializer = new XMLSerializer();
+  source = serializer.serializeToString(svg);
+  source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+
+  url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(source);
+  document.querySelector('#url').innerHTML = `<a href="${url}" title="Download your jersey" download>Download your jersey</a>`;
+}
+
+function rgbToHex(rgb) {
   rgb = rgb.match(/\d+/g);
 
   return '#' + rgb.map(function (number) {
@@ -127,7 +145,7 @@ function drawPicker(svg) {
   svgContainer.innerHTML = '<p class="loading"></p>';
   jerseys[svg].forEach(param => {
     picker += `
-      <input type="color" id="${param}" name="${param}" value="#FFFFFF"/>
+      <input type="color" id="${param}" name="${param}" value="#FFFFFF" onChange="svgStyleHandler()"/>
       <label for="base_color">${color_type_names[param]}</label>
       <br/>
     `
@@ -137,4 +155,3 @@ function drawPicker(svg) {
 }
 
 watchJerseyClick();
-watchPickerClick();

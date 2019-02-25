@@ -75,13 +75,7 @@ function svgStyleHandler() {
   let style = document.querySelector('#svg').querySelector('svg').getElementsByTagName('style')[0]; //innerHTML
   let cssRules = style.sheet.cssRules;
 
-  //@TODO take this style from object  
   newStyle += '.shade{opacity:0.1;fill:#010101;}\n';
-  /*
-  [...rule.style].forEach(style => {
-    console.log(style);
-  });
-  */
 
   [...cssRules].forEach(rule => {
     let color;
@@ -125,7 +119,7 @@ function generateSVGLink() {
   source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
 
   url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(source);
-  document.querySelector('#url').innerHTML = `<a href="${url}" title="Download your jersey" download>Download your jersey</a>`;
+  document.querySelector('#url').innerHTML = `<a href="${url}" title="Download your jersey" download>Download the jersey</a>`;
 }
 
 function rgbToHex(rgb) {

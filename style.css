@@ -110,7 +110,7 @@ input, select {
   color: #9b9797;
   text-shadow: 1px 1px 1px #ffffff;
 }
-#pictures img:hover, #pictures .picture-highligt {
+#pictures img:hover, #pictures .picture-highlight {
   border: 1px solid red;
   border-radius: 2px;
   box-shadow: 1px 1px 20px #e9e5e5;
@@ -119,6 +119,16 @@ input, select {
 }
 input[type="color"] {
   cursor: pointer;
+  width: 56px;
+}
+input[type="text"] {
+  width: 56px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  background: linear-gradient(#E3E3E3, #ffffff);
+  border: 1px solid #AFAFAF;
+  font-size: 12px;
 }
 
 /* loading circles*/

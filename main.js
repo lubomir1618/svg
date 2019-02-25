@@ -22,7 +22,7 @@ const jerseys = {
 }
 
 function watchJerseyClick() {
-  const highlight = 'picture-highligt';
+  const highlight = 'picture-highlight';
   let images = document.querySelectorAll('.jersey');
 
   [...images].forEach(
@@ -105,10 +105,16 @@ function getColorsToPicker() {
     const cssSelector = rule.selectorText.substr(1);
     if (cssClasses.includes(cssSelector)) {
       form.querySelector('#' + cssSelector).value = rgbToHex(rule.style.fill);
+      form.querySelector('#' + cssSelector + '-own').value = rgbToHex(rule.style.fill);
     }
   });
 
   svgStyleHandler();
+}
+
+function updateInputValue(from, to) {
+  const source = document.querySelector('#' + from).value;
+  document.querySelector('#' + to).value = source;
 }
 
 function generateSVGLink() {
@@ -139,8 +145,9 @@ function drawPicker(svg) {
   svgContainer.innerHTML = '<p class="loading"></p>';
   jerseys[svg].forEach(param => {
     picker += `
-      <input type="color" id="${param}" name="${param}" value="#FFFFFF" onChange="svgStyleHandler()"/>
-      <label for="base_color">${color_type_names[param]}</label>
+      <input type="color" id="${param}" name="${param}" value="#ffffff" onChange="svgStyleHandler()" title="pick the color"/>
+      <label for="${param}">${color_type_names[param]}</label><br/>
+      <input type="text" name="${param}-own" id="${param}-own" value="ffffff" onChange="updateInputValue('${param}-own', '${param}')" title="or add your own color"/> 
       <br/>
     `
   });
@@ -151,10 +158,10 @@ function drawPicker(svg) {
 function drawImages() {
   let images = document.querySelector('#content').querySelector('#pictures');
   let content = '';
-  images.innerHTML = '<p class="loading"></p>';
+  images.innerHTML = '<p class="loading">&nbsp;</p>';
 
-  Object.keys(jerseys).forEach(image => {
-    content += `<img src="${svgLocation}${image}.svg" alt="${image}" id="${image}" class="jersey"/>\n`;
+  Object.keys(jerseys).forEach((image, index) => {
+    content += `<img src="${svgLocation}${image}.svg" alt="${image}" id="${image}" class="jersey ${index === 0 ? 'picture-highlight': ''}"/>\n`;
   });
 
   images.innerHTML = content;
@@ -162,5 +169,3 @@ function drawImages() {
 }
 
 drawImages();
-
-// @TODO check MS Edge

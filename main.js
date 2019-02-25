@@ -23,6 +23,7 @@ const jerseys = {
 
 function watchJerseyClick() {
   const highlight = 'picture-highlight';
+  const svg1st = Object.keys(jerseys)[0]; 
   let images = document.querySelectorAll('.jersey');
 
   [...images].forEach(
@@ -37,6 +38,9 @@ function watchJerseyClick() {
       });
     }
   );
+
+  drawPicker(svg1st);
+  pasteSVG(svgLocation + svg1st + '.svg', '#svg');
 }
 
 function removeClass(name) {
@@ -72,7 +76,7 @@ function changeColorShade(color, percent) {
 function svgStyleHandler() {
   const pickerContainer = document.querySelector('#form');
   let newStyle = '';
-  let style = document.querySelector('#svg').querySelector('svg').getElementsByTagName('style')[0]; //innerHTML
+  let style = document.querySelector('#svg').querySelector('svg').getElementsByTagName('style')[0];
   let cssRules = style.sheet.cssRules;
 
   newStyle += '.shade{opacity:0.1;fill:#010101;}\n';
@@ -113,10 +117,14 @@ function getColorsToPicker() {
 }
 
 function updateInputValue(from, to) {
-  const source = document.querySelector('#' + from).value;
-  document.querySelector('#' + to).value = source;
+  let source = document.querySelector('#' + from).value;
+  const target = document.querySelector('#' + to).value;
 
-  svgStyleHandler();
+  source = source.includes('#') ? source : '#' + source
+  document.querySelector('#' + to).value = source;
+  if (source !== target) {
+    svgStyleHandler();
+  }
 }
 
 function generateSVGLink() {
@@ -147,9 +155,9 @@ function drawPicker(svg) {
   svgContainer.innerHTML = '<p class="loading"></p>';
   jerseys[svg].forEach(param => {
     picker += `
-      <input type="color" id="${param}" name="${param}" value="#ffffff" onChange="svgStyleHandler()" title="pick the color"/>
+      <input type="color" id="${param}" name="${param}" value="#ffffff" onChange="updateInputValue('${param}', '${param}-own')" title="pick the color"/>
       <label for="${param}">${color_type_names[param]}</label><br/>
-      <input type="text" name="${param}-own" id="${param}-own" value="ffffff" onChange="updateInputValue('${param}-own', '${param}')" title="or add your own color"/> 
+      <input type="text" name="${param}-own" id="${param}-own" value="ffffff" onChange="updateInputValue('${param}-own', '${param}')" title="or add your own color e.g. #ff0000"/> 
       <br/>
     `
   });
@@ -159,14 +167,16 @@ function drawPicker(svg) {
 
 function drawImages() {
   let images = document.querySelector('#content').querySelector('#pictures');
-  let content = '';
+  let content = ''; 
   images.innerHTML = '<p class="loading">&nbsp;</p>';
 
   Object.keys(jerseys).forEach((image, index) => {
     content += `<img src="${svgLocation}${image}.svg" alt="${image}" id="${image}" class="jersey ${index === 0 ? 'picture-highlight': ''}"/>\n`;
+    //svg1st = index === 0 ? image : '';
   });
 
   images.innerHTML = content;
+
   watchJerseyClick(); 
 }
 

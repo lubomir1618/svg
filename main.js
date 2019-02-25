@@ -115,6 +115,8 @@ function getColorsToPicker() {
 function updateInputValue(from, to) {
   const source = document.querySelector('#' + from).value;
   document.querySelector('#' + to).value = source;
+
+  svgStyleHandler();
 }
 
 function generateSVGLink() {

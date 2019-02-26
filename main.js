@@ -2,9 +2,9 @@
 const svgLocation = './jerseys/';
 
 const color_type_names = {
-  main: 'main color (torso)',
-  secondary: 'secondary color',
-  accent: 'collar / strips'
+  main: 'Main color (torso)',
+  secondary: 'Secondary color',
+  accent: 'Collar / strips'
 }
 // for new or different jersey just add it to this object and to svgLocation
 const jerseys = {
@@ -135,7 +135,7 @@ function generateSVGLink() {
   source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
 
   url = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(source);
-  document.querySelector('#url').innerHTML = `<a href="${url}" title="Download your jersey" download>Download the jersey</a>`;
+  document.querySelector('#url').innerHTML = `<a href="${url}" title="Download the jersey" download>Download the jersey</a>`;
 }
 
 function rgbToHex(rgb) {
@@ -155,10 +155,10 @@ function drawPicker(svg) {
   svgContainer.innerHTML = '<p class="loading"></p>';
   jerseys[svg].forEach(param => {
     picker += `
-      <input type="color" id="${param}" name="${param}" value="#ffffff" onChange="updateInputValue('${param}', '${param}-own')" title="pick the color"/>
       <label for="${param}">${color_type_names[param]}</label><br/>
+      <input type="color" id="${param}" name="${param}" value="#ffffff" onChange="updateInputValue('${param}', '${param}-own')" title="pick the color"/>
       <input type="text" name="${param}-own" id="${param}-own" value="ffffff" onChange="updateInputValue('${param}-own', '${param}')" title="or add your own color e.g. #ff0000"/> 
-      <br/>
+      <br/><br/>
     `
   });
 
@@ -172,7 +172,6 @@ function drawImages() {
 
   Object.keys(jerseys).forEach((image, index) => {
     content += `<img src="${svgLocation}${image}.svg" alt="${image}" id="${image}" class="jersey ${index === 0 ? 'picture-highlight': ''}"/>\n`;
-    //svg1st = index === 0 ? image : '';
   });
 
   images.innerHTML = content;

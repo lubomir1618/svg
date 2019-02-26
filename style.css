@@ -14,6 +14,7 @@ h1 {
   font-size: 16px;
   margin: 6px;
   color: #777777;
+  text-shadow: 1px 1px 1px #ffffff;
 }
 img {
   width: 150px;
@@ -21,6 +22,7 @@ img {
 }
 input, select {
   margin: 10px;
+  margin-left: 0px;
   height: 25px;
 }
 #content {
@@ -38,8 +40,8 @@ input, select {
   position: absolute;
   width: 56px;
   height: 22px;
-  right: 6px;
-  top: 8px;
+  right: 25px;
+  top: 24px;
   background: url('./opta-logo-small.png') top left no-repeat;
   opacity: .8;
 }
@@ -52,13 +54,14 @@ input, select {
 }
 #svg {
   width: 50%;
+  height: 280px;
   float: left;
   text-align: right; 
 }
 #svg:after {
   content: 'SVG preview';
   position: absolute;
-  right: 5px;
+  right: 2px;
   top: 0px;
   font-size: 12px;
   color: #9b9797;
@@ -99,7 +102,7 @@ svg path, svg rect {
   margin: 0 auto;
   border-bottom: 1px solid #e9e5e5;
   border-top: 1px solid #ddd4d4;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -107,8 +110,8 @@ svg path, svg rect {
 #pictures:after {
   content: 'Team Kits';
   position: absolute;
-  right: 6px;
-  top: 8px;
+  right: 2px;
+  top: 6px;
   font-size: 12px;
   color: #9b9797;
   text-shadow: 1px 1px 1px #ffffff;
@@ -119,19 +122,23 @@ svg path, svg rect {
   box-shadow: 1px 1px 20px #e9e5e5;
   background: #ffffff;
   cursor: pointer;
+  transition: background-color .3s ease;
 }
 input[type="color"] {
   cursor: pointer;
   width: 56px;
+  vertical-align: middle;
 }
 input[type="text"] {
-  width: 56px;
-  height: 25px;
+  width: 80px;
+  height: 27px;
   line-height: 25px;
   text-align: center;
-  background: linear-gradient(#E3E3E3, #ffffff);
+  background:#ffffff;
   border: 1px solid #AFAFAF;
   font-size: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 /* loading circles*/
@@ -139,7 +146,7 @@ input[type="text"] {
   display: block;
   position: relative;
   left: 50%;
-  top: 50%;
+  top: 10px;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 160px;
